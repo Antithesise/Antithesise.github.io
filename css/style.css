@@ -17,7 +17,6 @@ header {
 
 a:link, a:visited {
 	height: 18px;
-	font-size: 5;
 	font-family: Arial;
 	color: rgb(255, 255, 255);
 	background: rgb(78, 156, 247);
@@ -34,7 +33,6 @@ a:link, a:visited {
 }
 
 a:hover, a:active {
-	font-size: 5;
 	font-family: Arial;
 	background: rgb(187, 219, 255);
 	padding: 14px 25px;
@@ -50,6 +48,44 @@ a:hover, a:active {
 }
 
 a:hover img, a:active img {filter: invert(100%);
+}
+
+footer {
+	position: fixed;
+	width: calc(100vw - 150px);
+	height: 150px;
+	background-color: grey;
+	top: calc(100vh - 150px);
+	left: 150px;
+}
+
+footer>a:active, footer>a:link, footer>a:visited {
+	height: 30px;
+	color: white;
+	font-size: 10px;
+	display: inline-block;
+	margin: 10px;
+	margin-left: 0;
+	margin-right: -4px;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	text-align: center;
+	width: 25%
+}
+
+footer>a:hover {
+	text-decoration: underline;
+}
+
+footer>a img {
+	margin-left: 5px;
+	height: 16px;
+	width: 16px;
+}
+
+footer>a:hover img {
+	filter: invert(0%);
 }
 
 .menu {
@@ -116,7 +152,7 @@ h2 {
 	height: 15px
 }
 
-ul.settings {
+ul.sidebar {
 	list-style-type: none;
 	margin: 0px;
 	padding: 0px;
@@ -129,7 +165,7 @@ ul.settings {
 	border-top: 1px solid rgb(37, 120, 214)
 }
 
-ul.settings h1 {
+ul.sidebar h1 {
 	cursor: default;
 	display: inline-block;
 	padding: 0px;
@@ -145,14 +181,14 @@ ul.settings h1 {
 	text-align: center
 }
 
-ul.settings li a {
+ul.sidebar li a {
 	display: block;
 	padding: 8px 16px;
 	margin: 0px;
 	text-decoration: none
 }
 
-ul.settings li a:not(:hover) {
+ul.sidebar li a:not(:hover) {
 	display: block;
 	padding: 8px 16px;
 	border: 1px solid rgba(255, 255, 255, 0);
@@ -162,7 +198,7 @@ ul.settings li a:not(:hover) {
 	border-top: 1px solid rgb(37, 120, 214)
 }
 
-ul.settings li a:hover {
+ul.sidebar li a:hover {
 	height: 17px;
 	background-color: rgb(187, 219, 255);
 	color: rgb(255, 255, 255);
@@ -244,7 +280,7 @@ h3 {
 	margin-right: 20px
 }
 
-::-moz-selection { /*for Firefox*/
+::-moz-selection {
   background: rgba(255, 255, 255, 0)
 }
 
