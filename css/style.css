@@ -53,9 +53,9 @@ a:hover img, a:active img {filter: invert(100%);
 footer {
 	position: fixed;
 	width: calc(100vw - 150px);
-	height: 150px;
+	height: 75px;
 	background-color: grey;
-	top: calc(100vh - 150px);
+	top: calc(100vh - 75px);
 	left: 150px;
 }
 
@@ -64,8 +64,10 @@ footer>a:active, footer>a:link, footer>a:visited {
 	color: white;
 	font-size: 10px;
 	display: inline-block;
-	margin: 10px;
-	margin-left: 0;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	margin: 0;
 	margin-right: -4px;
 	padding: 0;
 	border: 0;
