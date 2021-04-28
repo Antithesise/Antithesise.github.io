@@ -2,6 +2,30 @@ body {
 	min-width: 650px;
 }
 
+div.content {
+	height: calc(calc(50vw - 150px) * 0.45);
+	width: 45%;
+	display: block;
+	position: relative;
+	overflow: auto;
+	background-color: rgb(187, 219, 255);
+	padding: 2px;
+	font-family: "helvetica", sans-serif;
+	border: 5px solid rgb(78, 156, 247);
+	border-radius: 2.5px;
+	margin-right: 5px;
+}
+
+div.wrapper {
+	position: relative;
+	width: calc(100vw - 190px);
+	left: 150px;
+	height: 100vh;
+	top: -16px;
+	background-color: rgb(191, 191, 191);
+	padding: 2.5px;
+}
+
 header {
 	font-family: "helvetica", sans-serif;
 	color: rgb(255, 255, 255);
@@ -95,9 +119,8 @@ footer>a:hover img {
 	background: rgb(78, 156, 247);
 	padding: 14px 25px;
 	cursor: default;
-	position: -webkit-sticky; /*for Safari*/
 	position: sticky;
-	width: calc(100vw - 43.5px);
+	width: calc(100vw - 50px);
 	height: 22px;
 	align-self: center;
 	padding-left: 2.5px
@@ -110,21 +133,6 @@ li {
 	background: rgba(255, 255, 255, 0);
 	text-align: left;
 	cursor: default
-}
-
-aside.sidebar {
-	color: rgb(255, 255, 255);
-	background: rgb(78, 156, 247);
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	margin: -2.5px;
-	margin-top: -13px;
-	margin-bottom: -13px;
-	padding: 10px;
-	background: rgb(78, 156, 247);
-	border: 1px solid rgb(37, 120, 214);
-	width: 100px
 }
 
 h1 {
@@ -164,7 +172,7 @@ ul.sidebar {
 	background: rgb(78, 156, 247);
 	position: fixed;
 	height: calc(100vw - 22px);
-	overflow: hidden;
+	overflow: auto;
 	border-top: 1px solid rgb(37, 120, 214)
 }
 
