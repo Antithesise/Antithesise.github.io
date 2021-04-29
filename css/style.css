@@ -2,16 +2,6 @@ body {
 	min-width: 650px;
 }
 
-div.content {
-	position: relative;
-	overflow: auto;
-	background-color: rgb(187, 219, 255);
-	font-family: "helvetica", sans-serif;
-	border: 5px solid rgb(78, 156, 247);
-	border-radius: 2.5px;
-	min-height: 75px;
-}
-
 div.wrapper {
 	position: relative;
 	width: calc(100vw - 173.5px);
@@ -126,6 +116,22 @@ footer>a img {
 
 footer>a:hover img {
 	filter: invert(0%);
+}
+
+body div.wrapper div.content {
+	position: relative;
+	overflow: auto;
+	background-color: rgb(187, 219, 255);
+	font-family: "helvetica", sans-serif;
+	border: 5px solid rgb(78, 156, 247);
+	border-radius: 2.5px;
+	height: fit-content;
+	text-align: center;
+}
+
+body div.wrapper div.content img {
+	max-width: 100%;
+	max-height: 100%;
 }
 
 .menu {
