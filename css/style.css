@@ -3,27 +3,31 @@ body {
 }
 
 div.content {
-	height: calc(calc(50vw - 150px) * 0.45);
-	width: 45%;
-	display: block;
 	position: relative;
 	overflow: auto;
 	background-color: rgb(187, 219, 255);
-	padding: 2px;
 	font-family: "helvetica", sans-serif;
 	border: 5px solid rgb(78, 156, 247);
 	border-radius: 2.5px;
-	margin-right: 5px;
+	min-height: 75px;
 }
 
 div.wrapper {
 	position: relative;
-	width: calc(100vw - 190px);
+	width: calc(100vw - 173.5px);
 	left: 150px;
-	height: 100vh;
+	height: calc(100vh - 264px);
 	top: -16px;
 	background-color: rgb(191, 191, 191);
 	padding: 2.5px;
+	padding-bottom: 0px;
+	padding-top: 0px;
+	border: 2.5px solid rgb(191, 191, 191);
+	border-left: 0;
+	overflow: auto;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	grid-gap: 5px;
 }
 
 header {
@@ -38,6 +42,15 @@ header {
 	background-attachment: fixed;
 	cursor: default;
 	padding-left: 5px;
+}
+
+header img {
+	width: 75px;
+	height: 75px;
+	display: block;
+	position: fixed;
+	top: 8px;
+	right: 8px;
 }
 
 a:link, a:visited {
@@ -77,8 +90,8 @@ a:hover img, a:active img {filter: invert(100%);
 
 footer {
 	position: fixed;
-	width: calc(100vw - 158px);
-	height: 75px;
+	width: max(calc(100vw - 166px), 225px);
+	height: 66.5px;
 	background-color: grey;
 	top: calc(100vh - 75px);
 	left: 158px;
@@ -120,7 +133,7 @@ footer>a:hover img {
 	padding: 14px 25px;
 	cursor: default;
 	position: sticky;
-	width: calc(100vw - 50px);
+	width: calc(100vw - 43.5px);
 	height: 22px;
 	align-self: center;
 	padding-left: 2.5px
@@ -137,7 +150,7 @@ li {
 
 h1 {
 	font-family: "helvetica", sans-serif;
-	margin-left: 40px;
+	margin-left: 15px;
 	margin-bottom: 40px;
 	cursor: default
 }
@@ -152,7 +165,7 @@ h2 {
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
-	margin: -2.5px;
+	margin-left: 15px;
 	margin-top: -13px;
 	margin-bottom: 7.5px;
 	cursor: default
@@ -171,7 +184,7 @@ ul.sidebar {
 	width: 150px;
 	background: rgb(78, 156, 247);
 	position: fixed;
-	height: calc(100vw - 22px);
+	height: calc(100vh - 194px);
 	overflow: auto;
 	border-top: 1px solid rgb(37, 120, 214)
 }
