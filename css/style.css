@@ -97,21 +97,20 @@ footer {
 	left: 158px;
 }
 
-footer>a:active, footer>a:link, footer>a:visited {
-	height: 30px;
+footer>a:any-link {
 	color: white;
 	font-size: 10px;
 	display: inline-block;
 	position: relative;
 	top: 50%;
-	transform: translateY(-50%);
+	transform: translateY(-100%);
 	margin: 0;
 	margin-right: -4px;
 	padding: 0;
 	border: 0;
 	background: transparent;
 	text-align: center;
-	width: 25%
+	width: 25%;
 }
 
 footer>a:hover {
@@ -119,9 +118,11 @@ footer>a:hover {
 }
 
 footer>a img {
+	margin: 0px;
 	margin-left: 5px;
-	height: 16px;
-	width: 16px;
+	margin-right: 5px;
+	height: 12px;
+	width: 12px;
 }
 
 footer>a:hover img {
