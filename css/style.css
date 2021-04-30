@@ -104,6 +104,7 @@ footer>a:any-link {
 }
 
 footer>a:hover {
+	cursor: pointer;
 	text-decoration: underline;
 }
 
@@ -112,10 +113,15 @@ footer>a img {
 	margin-right: -10px;
 	height: 12px;
 	width: 12px;
+	filter: grayscale(100%);
 }
 
 footer>a:hover img {
 	filter: invert(0%);
+}
+
+footer a h2 {
+	cursor: pointer;
 }
 
 body div.wrapper div.content {
@@ -127,6 +133,7 @@ body div.wrapper div.content {
 	border-radius: 2.5px;
 	height: fit-content;
 	text-align: center;
+	cursor: pointer;
 }
 
 body div.wrapper div.content img {
@@ -174,7 +181,7 @@ h2 {
 	margin-left: 15px;
 	margin-top: -13px;
 	margin-bottom: 7.5px;
-	cursor: default
+	cursor: default;
 }
 
 .menu a img {
