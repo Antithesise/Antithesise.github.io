@@ -72,7 +72,7 @@ a:hover, a:active {
 	margin-top: -15px;
 	margin-bottom: -14px;
 	color: rgb(0, 0, 0);
-	border: 1px solid rgb(37, 120, 214)
+	border: 1px solid rgb(37, 120, 214);
 }
 
 a:hover img, a:active img {filter: invert(100%);
@@ -80,7 +80,8 @@ a:hover img, a:active img {filter: invert(100%);
 
 footer {
 	position: fixed;
-	width: max(calc(100vw - 166px), 225px);
+	width: calc(100vw - 166px);
+	min-width: 766px;
 	height: 66.5px;
 	background-color: grey;
 	top: calc(100vh - 75px);
@@ -92,15 +93,17 @@ footer>a:any-link {
 	font-size: 10px;
 	display: inline-block;
 	position: relative;
-	top: 50%;
-	transform: translateY(-100%);
-	margin: 0;
-	margin-right: -4px;
 	padding: 0;
+	margin: 18.35px;
+	margin-left: 0;
+	margin-right: -4px;
 	border: 0;
+	border-left: 1px solid rgb(140, 140, 140);
+	border-right: 1px solid rgb(140, 140, 140);
 	background: transparent;
 	text-align: center;
-	width: 25%;
+	width: calc(25% - 2px);
+	height: 30px;
 }
 
 footer>a:hover {
@@ -113,7 +116,7 @@ footer>a img {
 	margin-right: -10px;
 	height: 18px;
 	width: 18px;
-	filter: grayscale(100%);
+	filter: grayscale(70%);
 	border: 5px solid rgb(140, 140, 140);
 	border-radius: 50%;
 	background-color: rgb(140, 140, 140);
@@ -152,7 +155,8 @@ body div.wrapper div.content img {
 	width: calc(100vw - 43.5px);
 	height: 22px;
 	align-self: center;
-	padding-left: 2.5px
+	padding-left: 2.5px;
+	min-width: 619px;
 }
 
 li {
