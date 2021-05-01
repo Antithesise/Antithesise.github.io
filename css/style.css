@@ -200,11 +200,11 @@ ul.sidebar {
 	list-style-type: none;
 	margin: 0px;
 	padding: 0px;
-	margin-top: -16px;
+	margin-top: -17px;
 	width: 150px;
 	background: rgb(78, 156, 247);
 	position: fixed;
-	height: calc(100vh - 194px);
+	height: calc(100vh - 193px);
 	overflow: auto;
 	border-top: 1px solid rgb(37, 120, 214)
 }
