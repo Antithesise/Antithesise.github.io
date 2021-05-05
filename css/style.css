@@ -148,6 +148,17 @@ body div.wrapper div.content img {
 	max-height: 100%;
 }
 
+body div.wrapper div.content a {
+	text-decoration: none;
+	font-weight: bold;
+	color: black;
+	background: none;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	text-align: center;
+}
+
 .menu {
 	background: rgb(78, 156, 247);
 	padding: 14px 25px;
