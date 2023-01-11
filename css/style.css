@@ -72,25 +72,28 @@ aside {
 main {
     position: sticky;
     display: block;
-    height: 1000px;
+    min-height: calc(100vh - 140px);
     width: calc(100vw - 270px);
     left: 270px;
     margin-top: calc(-100vh + 260px);
     margin-bottom: 60px;
-    box-sizing: border-box;
     z-index: 100;
+    box-sizing: border-box;
     overflow-x: hidden;
     overflow-y: visible;
 }
 
 footer {
-	position: fixed;
+	position: sticky;
     display: block;
     width: 100vw;
-    height: 60px;
-    bottom: 0;
+    height: 100px;
+    bottom: -40px;
+    margin-top: -60px;
+    padding: 21px;
     border-radius: 6px 6px 0 0;
     z-index: 400;
+    box-sizing: border-box;
 	background: #6c6b6b;
     box-shadow: 0 0 12px -2px #000;
 }
@@ -98,6 +101,5 @@ footer {
 footer > span#copyright {
     position: relative;
     display: block;
-    margin: 21px;
     color: #ccc;
 }
