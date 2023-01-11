@@ -72,7 +72,7 @@ aside {
 main {
     position: sticky;
     display: block;
-    min-height: calc(100vh - 140px);
+    min-height: calc(100vh - 100px);
     width: calc(100vw - 270px);
     left: 270px;
     margin-top: calc(-100vh + 260px);
