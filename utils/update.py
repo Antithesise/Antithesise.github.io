@@ -1,4 +1,4 @@
-from time import gmtime
+from time import gmtime, strftime
 from os import walk
 
 from post import Post
@@ -21,7 +21,13 @@ template = """
 			<img id="icon" src="/media/Avatar.jpeg">
             <nav></nav>
 		</header>
-        <aside></aside>
+        <aside>
+            <ul>
+                <li>
+                    <a href="/posts">all posts</a>
+                </li>
+            </ul>
+        </aside>
         <main>{content}
         </main>
 		<footer>
@@ -51,3 +57,12 @@ if __name__ == "__main__":
 
     with open("index.html", "w") as f:
         f.write(template.format(page="Home", content="".join(home[:50])))
+
+    content = "\n            <article>"
+    for p in posts:
+        content += f"\n                <ul>\n                    <li>\n                        <a href=\"/{p.path}\">{p.title}</a> ({strftime(r'%Y-%m-%d', p.date)})\n                    </li>\n                </ul>"
+
+    with open("posts.html", "w") as f:
+        content += "\n            </article>"
+
+        f.write(template.format(page="Posts", content=content))

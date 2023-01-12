@@ -6,9 +6,12 @@ from typing import Self
 
 template = """
             <article>
-                <h2><a href="/{path}">{title}</a></h2>
+                <h2>
+                    <a href="/{path}">{title}</a>
+                </h2>
                 <hr>
-                <time class="meta" datetime="{fdate}">{date}</time>{sep}<span class="meta location">{loc}</span></data>
+                <time class="meta" datetime="{fdate}">{date}</time>{sep}
+                <span class="meta location">{loc}</span>
                 <br>
                 {content}
             </article>
@@ -43,7 +46,7 @@ class Post:
             title=self.title,
             fdate=strftime(r"%Y-%m-%d %H:%M:%S", self.date),
             date=strftime(r"%I:%M %p, %Y-%m-%d", self.date),
-            sep=", " * bool(self.loc),
+            sep="<span>, </span>" * bool(self.loc),
             loc=self.loc,
             content=self.content.replace("\n", "\n                ")
         )
