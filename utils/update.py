@@ -44,10 +44,10 @@ if __name__ == "__main__":
     for p in posts:
         content = p.toHTML()
 
+        home.insert(0, content)
+
         with open(f"{p.path}", "w") as f:
             f.write(template.format(page=p.title, content=content))
-
-    home.reverse()
 
     with open("index.html", "w") as f:
         f.write(template.format(page="Home", content="".join(home[:50])))
