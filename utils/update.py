@@ -46,7 +46,7 @@ if __name__ == "__main__":
 
         home.insert(0, content)
 
-        with open(f"{p.path}", "w") as f:
+        with open(f"{p.path}.html", "w") as f:
             f.write(template.format(page=p.title, content=content))
 
     with open("index.html", "w") as f:

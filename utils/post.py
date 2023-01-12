@@ -52,4 +52,4 @@ if __name__ == "__main__":
     now = gmtime()
 
     with open("posts/%d-%s-.json" % (now.tm_year, str(now.tm_mon).zfill(2)), "w") as f:
-        f.write("{\n    \"title\": \"\",\n    \"path\": \"posts/%d-%s-000.html\",\n    \"date\": %d,\n    \"loc\": \"\",\n    \"content\": \"\"\n}" % (now.tm_year, str(now.tm_mon).zfill(2), int(time())))
+        f.write("{\n    \"title\": \"\",\n    \"path\": \"posts/%d-%s-\",\n    \"date\": %d,\n    \"loc\": \"\",\n    \"content\": \"\"\n}" % (now.tm_year, str(now.tm_mon).zfill(2), int(time())))
