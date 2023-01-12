@@ -9,18 +9,18 @@ now = gmtime()
 template = """
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-	<head>
-		<meta charset="utf-8">
-		<title>{page} | GoodCoderBBoy's Blog</title>
-		<link rel="stylesheet" href="/css/style.css">
-		<link rel="icon" href="/media/Avatar.jpeg" />
-	</head>
-	<body>
-		<header>
-			<h1 id="title"><a href="/">GoodCoderBBoy</a></h1>
-			<img id="icon" src="/media/Avatar.jpeg">
+    <head>
+        <meta charset="utf-8">
+        <title>{page} | GoodCoderBBoy's Blog</title>
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="icon" href="/media/Avatar.jpeg" />
+    </head>
+    <body>
+        <header>
+            <h1 id="title"><a href="/">GoodCoderBBoy</a></h1>
+            <img id="icon" src="/media/Avatar.jpeg">
             <nav></nav>
-		</header>
+        </header>
         <aside>
             <ul>
                 <li>
@@ -30,10 +30,10 @@ template = """
         </aside>
         <main>{content}
         </main>
-		<footer>
-			<span id="copyright">&copy; %d GoodCoderBBoy</span>
-		</footer>
-	</body>
+        <footer>
+            <span id="copyright">&copy; %d GoodCoderBBoy</span>
+        </footer>
+    </body>
 </html>
 """.strip() % now.tm_year
 

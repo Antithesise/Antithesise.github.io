@@ -1,8 +1,8 @@
 body {
     display: block;
-	margin: 0;
+    margin: 0;
     background: #8a9499;
-	font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     overflow-x: hidden;
     overflow-y: auto;
     scroll-behavior: smooth;
@@ -13,13 +13,13 @@ header {
     display: block;
     width: 100vw;
     height: 120px;
-	top: -40px;
+    top: -40px;
     z-index: 500;
-	color: #fff;
-	background: linear-gradient(to bottom, #34aadc, 20%, #2887b0);
+    color: #fff;
+    background: linear-gradient(to bottom, #34aadc, 20%, #2887b0);
     box-shadow: 0 0 12px -2px #000;
     overflow: visible;
-	cursor: default;
+    cursor: default;
 }
 
 header > h1#title {
@@ -37,11 +37,11 @@ header > h1#title > a {
 }
 
 header > img#icon {
-	position: fixed;
-	display: block;
-	height: 216px;
-	top: 0;
-	right: 0;
+    position: fixed;
+    display: block;
+    height: 216px;
+    top: 0;
+    right: 0;
     border-radius: 0 0 0 50%;
     z-index: 600;
     box-shadow: 0 0 12px -2px #000;
@@ -114,7 +114,7 @@ article > h2 {
 }
 
 footer {
-	position: sticky;
+    position: sticky;
     display: block;
     width: 100vw;
     height: 100px;
@@ -124,7 +124,7 @@ footer {
     border-radius: 6px 6px 0 0;
     z-index: 400;
     box-sizing: border-box;
-	background: #6c6b6b;
+    background: #6c6b6b;
     box-shadow: 0 0 12px -2px #000;
 }
 
