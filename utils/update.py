@@ -44,11 +44,10 @@ if __name__ == "__main__":
     for p in posts:
         content = p.toHTML()
 
-        if len(home) < 50:
-            home.append(content)
-
         with open(f"{p.path}", "w") as f:
             f.write(template.format(page=p.title, content=content))
 
+    home.reverse()
+
     with open("index.html", "w") as f:
-        f.write(template.format(page="Home", content="".join(home)))
+        f.write(template.format(page="Home", content="".join(home[:50])))
