@@ -59,7 +59,7 @@ if __name__ == "__main__":
         f.write(template.format(page="Home", content="".join(home[:50])))
 
     content = "\n            <article>"
-    for p in posts:
+    for p in reversed(posts):
         content += f"\n                <ul>\n                    <li>\n                        <a href=\"/{p.path}\">{p.title}</a> ({strftime(r'%Y-%m-%d', p.date)})\n                    </li>\n                </ul>"
 
     with open("posts.html", "w") as f:
