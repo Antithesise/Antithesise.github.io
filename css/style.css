@@ -2,7 +2,7 @@ body {
     display: block;
 	margin: 0;
     background: #8a9499;
-	font-family: "helvetica", sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
     overflow-x: hidden;
     overflow-y: auto;
     scroll-behavior: smooth;
@@ -29,6 +29,11 @@ header > h1#title {
     margin-top: 0;
     margin-left: 16px;
     margin-bottom: 20px;
+}
+
+header > h1#title > a {
+    color: #fff;
+    text-decoration: none;
 }
 
 header > img#icon {
@@ -81,6 +86,40 @@ main {
     box-sizing: border-box;
     overflow-x: hidden;
     overflow-y: visible;
+}
+
+article {
+    position: relative;
+    display: block;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 6px;
+    background: #ccc;
+}
+
+h2 {
+    margin: 0;
+}
+
+.meta {
+    color: #3d3d3d;
+    font-style: italic;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:link {
+    color: #0000EE;
+}
+
+a:visited {
+    color: #551A8B;
 }
 
 footer {
