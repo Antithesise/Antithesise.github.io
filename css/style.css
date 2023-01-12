@@ -78,6 +78,7 @@ aside {
 }
 
 aside > ul {
+    font-size: 20px;
     list-style-type: square;
 }
 
