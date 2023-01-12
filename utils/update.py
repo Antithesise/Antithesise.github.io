@@ -1,6 +1,5 @@
 from time import gmtime
 from os import walk
-from re import sub
 
 from post import Post
 
@@ -45,7 +44,8 @@ if __name__ == "__main__":
     for p in posts:
         content = p.toHTML()
 
-        home.append(content)
+        if len(home) < 50:
+            home.append(content)
 
         with open(f"{p.path}", "w") as f:
             f.write(template.format(page=p.title, content=content))
