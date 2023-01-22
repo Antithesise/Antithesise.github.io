@@ -3,5 +3,6 @@
     "path": "posts/2023-01-001",
     "date": 1673516102,
     "loc": "",
+    "css": [],
     "content": "<p>I am posting the link to the beta for my slow, highly-incompatible, feature-lacking text-editor. You can find it at <a href=\"https://github.com/good-coder-bad-boy/EditPy/releases/Beta\">https://github.com/good-coder-bad-boy/EditPy/releases/Beta</a>.</p>"
 }

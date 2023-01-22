@@ -1,0 +1,53 @@
+#fig-wrap {
+    display: grid;
+    height: 32em;
+    grid-template-rows: repeat(auto-fit, 2em);
+    grid-template-columns: repeat(auto-fit, 2em);
+    justify-content: center;
+}
+
+figure {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    border-image-source: url("/media/brick.png");
+    border-image-slice: 16;
+    border-image-width: 2em;
+    border-image-repeat: space;
+    border-width: 2em;
+    border-style: solid;
+    grid-row: 1/-1;
+    grid-column: 1/-1;
+    overflow: hidden;
+    background: #000;
+    text-align: center;
+    image-rendering: pixelated;
+}
+
+figcaption {
+    display: block;
+    margin: 1em;
+    grid-column: 1/-1;
+    grid-row: 1/3;
+    color: #fff;
+    font-family: nes-font;
+    text-align: center;
+    text-overflow: clip;
+}
+
+#wizard {
+    display: inline-block;
+    height: 6em;
+    width: 4em;
+    margin-top: 3em;
+    filter: brightness(1.2)
+}
+
+img {
+    image-rendering: pixelated;
+}
+
+@font-face {
+    font-family: nes-font;
+    src: url("/media/nes-font.ttf");
+}

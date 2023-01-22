@@ -2,9 +2,8 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Posts | GoodCoderBBoy's Blog</title>
-        <link rel="stylesheet" href="/css/style.css">
-        
+        <title>{page} | GoodCoderBBoy's Blog</title>
+        <link rel="stylesheet" href="/css/style.css">{css}
         <link rel="icon" href="/media/Avatar.jpeg" />
     </head>
     <body>
@@ -22,22 +21,10 @@
                 </li>
             </ul>
         </aside>
-        <main>
-            <article>
-                <ul>
-                    <li>
-                        <a href="/posts/2023-01-001">EditPy</a> (2023-01-12)
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <a href="/posts/2023-01-000">New Blog</a> (2023-01-12)
-                    </li>
-                </ul>
-            </article>
+        <main>{content}
         </main>
         <footer>
-            <span id="copyright">&copy; 2023 GoodCoderBBoy</span>
+            <span id="copyright">&copy; %d GoodCoderBBoy</span>
         </footer>
     </body>
 </html>

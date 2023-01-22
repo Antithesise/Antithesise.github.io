@@ -1,41 +1,23 @@
 from time import gmtime, strftime
-from os import walk
+from os import system, walk
 
 from post import Post
 
 
 now = gmtime()
 
-template = """
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title>{page} | GoodCoderBBoy's Blog</title>
-        <link rel="stylesheet" href="/css/style.css">
-        <link rel="icon" href="/media/Avatar.jpeg" />
-    </head>
-    <body>
-        <header>
-            <h1 id="title"><a href="/">GoodCoderBBoy</a></h1>
-            <img id="icon" src="/media/Avatar.jpeg">
-            <nav></nav>
-        </header>
-        <aside>
-            <ul>
-                <li>
-                    <a href="/posts">all posts</a>
-                </li>
-            </ul>
-        </aside>
-        <main>{content}
-        </main>
-        <footer>
-            <span id="copyright">&copy; %d GoodCoderBBoy</span>
-        </footer>
-    </body>
-</html>
-""".strip() % now.tm_year
+with open("templates/master.html", "r") as f:
+    template = f.read() % now.tm_year
+
+with open("templates/error.html", "r") as f:
+    errtemplate = f.read()
+
+with open("templates/map.html", "r") as f:
+    maptemplate = f.read()
+
+errors = {
+    404: "File Not Found"
+}
 
 posts: list[Post] = []
 for path, dirs, files in walk("posts"):
@@ -46,17 +28,31 @@ for path, dirs, files in walk("posts"):
 
 if __name__ == "__main__":
     home = []
+    styles = []
 
     for p in posts:
-        content = p.toHTML()
+        content = "\n" + p.toHTML()
+        css = "\n        " * bool(p.css) + "\n        ".join([f"<link rel=\"stylesheet\" href=\"{cssfile}\">" for cssfile in p.css])
 
         home.insert(0, content)
+        styles += p.css
 
         with open(f"{p.path}.html", "w") as f:
-            f.write(template.format(page=p.title, content=content))
+            f.write(template.format(page=p.title, css=css, content=content))
 
     with open("index.html", "w") as f:
-        f.write(template.format(page="Home", content="".join(home[:50])))
+        f.write(template.format(page="Home", css="", content="".join(home[:50])))
+
+    with open("map.html", "w") as f:
+        content = f"\n            <article>\n{maptemplate}\n            </article>"
+
+        f.write(template.format(page="Map", css="\n        <link rel=\"stylesheet\" href=\"/css/map.css\">", content=content))
+
+    for code, message in errors.items():
+        with open(f"{code}.html", "w") as f:
+            content = errtemplate.format(message=message, code=code, map=maptemplate)
+
+            f.write(template.format(page=message, css="\n        <link rel=\"stylesheet\" href=\"/css/map.css\">", content="\n" + content))
 
     content = "\n            <article>"
     for p in reversed(posts):
@@ -64,5 +60,8 @@ if __name__ == "__main__":
 
     with open("posts.html", "w") as f:
         content += "\n            </article>"
+        css = "\n        " + "\n        ".join([f"<link rel=\"stylesheet\" href=\"{cssfile}\">" for cssfile in set(styles)])
 
-        f.write(template.format(page="Posts", content=content))
+        f.write(template.format(page="Posts", css=css, content=content))
+
+    system("http-server -p 80 -d false -e html -c-1") # for testing

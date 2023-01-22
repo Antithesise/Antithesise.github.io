@@ -4,18 +4,8 @@ from json import load
 from typing import Self
 
 
-template = """
-            <article>
-                <h2>
-                    <a href="/{path}">{title}</a>
-                </h2>
-                <hr>
-                <time class="meta" datetime="{fdate}">{date}</time>{sep}
-                <span class="meta location">{loc}</span>
-                <br>
-                {content}
-            </article>
-""".rstrip()
+with open("templates/post.html", "r") as f:
+    template = f.read()
 
 
 class Post:
@@ -23,6 +13,7 @@ class Post:
     path: str
     date: struct_time
     loc: str
+    css: list[str]
     content: str
 
     @classmethod
@@ -36,6 +27,7 @@ class Post:
         p.path = data["path"]
         p.date = gmtime(data["date"])
         p.loc = data["loc"]
+        p.css = data["css"]
         p.content = data["content"]
 
         return p
@@ -55,4 +47,4 @@ if __name__ == "__main__":
     now = gmtime()
 
     with open("posts/%d-%s-.json" % (now.tm_year, str(now.tm_mon).zfill(2)), "w") as f:
-        f.write("{\n    \"title\": \"\",\n    \"path\": \"posts/%d-%s-\",\n    \"date\": %d,\n    \"loc\": \"\",\n    \"content\": \"\"\n}" % (now.tm_year, str(now.tm_mon).zfill(2), int(time())))
+        f.write("{\n    \"title\": \"\",\n    \"path\": \"posts/%d-%s-\",\n    \"date\": %d,\n    \"loc\": \"\",\n    \"css\": [],\n    \"content\": \"\"\n}" % (now.tm_year, str(now.tm_mon).zfill(2), int(time())))
