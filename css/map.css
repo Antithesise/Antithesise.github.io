@@ -6,11 +6,18 @@
     justify-content: center;
 }
 
+#fig-wrap * {
+    text-transform: uppercase;
+    text-rendering: geometricPrecision;
+    image-rendering: pixelated;
+    shape-rendering: geometricPrecision;
+}
+
 figure {
     box-sizing: border-box;
     width: 100%;
     margin: 0;
-    border-image-source: url("/media/brick.png");
+    border-image-source: url("/media/brick-border.png");
     border-image-slice: 16;
     border-image-width: 2em;
     border-image-repeat: space;
@@ -19,9 +26,10 @@ figure {
     grid-row: 1/-1;
     grid-column: 1/-1;
     overflow: hidden;
+    color: #fff;
     background: #000;
+    font-family: nes-font;
     text-align: center;
-    image-rendering: pixelated;
 }
 
 figcaption {
@@ -29,22 +37,141 @@ figcaption {
     margin: 1em;
     grid-column: 1/-1;
     grid-row: 1/3;
-    color: #fff;
-    font-family: nes-font;
     text-align: center;
     text-overflow: clip;
 }
 
 #wizard {
     display: inline-block;
-    height: 6em;
-    width: 4em;
-    margin-top: 3em;
+    height: 3em;
+    width: 2em;
+    margin-top: 1em;
     filter: brightness(1.2)
 }
 
-img {
-    image-rendering: pixelated;
+/* adapted from https://codepen.io/ross-angus/pen/jwxMjL */
+
+#tree-wrapper {
+    display: inline-block;
+    box-sizing: border-box;
+    height: 20em;
+    width: 100%;
+    margin-top: 0.875em;
+    padding: 1em;
+    overflow: overlay;
+}
+
+#tree-wrapper::-webkit-scrollbar {
+    height: 4em;
+    width: 0;
+}
+
+#tree-wrapper::-webkit-scrollbar-button {
+    box-sizing: border-box;
+    height: 4em;
+    width: 4em;
+    border: 1em solid transparent;
+    background-size: 4em;
+    background-position: center;
+}
+
+#tree-wrapper::-webkit-scrollbar-button:increment {
+    background-image: url("/media/stone-left.png");
+}
+
+#tree-wrapper::-webkit-scrollbar-button:decrement {
+    background-image: url("/media/stone-right.png");
+}
+
+#tree {
+    position: relative;
+    display: table;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    list-style: none;
+}
+
+.tree-branch {
+    position: relative;
+    list-style: none;
+    display: table;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.tree-branch:before {
+    content: "";
+    position: absolute;
+    height: 0.9375em;
+    top: -1em;
+    left: 50%;
+    outline: solid 0.0625em #fff;
+}
+
+.tree-node {
+    position: relative;
+    display: table-cell;
+    margin: 0;
+    padding: 0;
+    padding-top: 1em;
+    vertical-align: top;
+    list-style: none;
+}
+
+.tree-node:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin-top: 0.0625em;
+    outline: solid 0.0625em #fff;
+}
+
+.tree-node:first-child:before {
+    left: 50%;
+}
+
+.tree-node:last-child:before {
+    right: 50%;
+}
+
+.tree-node-text {
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+    height: 2em;
+    width: max-content;
+    margin: 0 0.25em 1em;
+    padding: 0.375em;
+    padding-right: 0.1875em;
+    border: solid 0.125em #fff;
+}
+
+.tree-node-text:before {
+    content: "";
+    position: absolute;
+    height: 0.9375em;
+    top: -1em;
+    left: 50%;
+    outline: solid 0.0625em #fff;
+}
+
+a.tree-node-text {
+    padding-top: 0.25em;
+    color: #fff;
+    text-decoration: underline solid #fff 0.125em;
+    text-underline-offset: 0.25em;
+}
+
+#tree > .tree-node {
+    margin-top: 0;
+}
+
+#tree > .tree-node:before, #tree > .tree-node:after, #tree > .tree-node > .tree-node-text:before {
+    outline: none;
 }
 
 @font-face {
