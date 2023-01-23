@@ -18,7 +18,7 @@ def index(dirpath: str, template: Optional[str]=None, /, *args: Any, filter: Cal
 @overload
 def index(dirpath: str, template: Optional[str]=None, /, *args: Any, filter: Callable[[str], bool]=..., format: Literal[False]=..., **kwargs: Any) -> Directory: ...
 
-def index(dirpath, template=None, /, *args, filter: Callable[[str], bool]=lambda p: True, format=True, **kwargs):
+def index(dirpath, template=None, /, *args, filter: Callable[[str], bool]=lambda p: p != "index.html", format=True, **kwargs):
     dirpath = dirpath.rstrip("\\/")
 
     if template is None and format is True:

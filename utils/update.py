@@ -16,7 +16,7 @@ with open("templates/map.html", "r") as f:
 with open("templates/error.html", "r") as f:
     errtemplate = f.read()
 
-with open("templates/index.html", "r") as f:
+with open("templates/autoindex.html", "r") as f:
     indextemplate = f.read()
 
 errors = {
@@ -76,7 +76,7 @@ if __name__ == "__main__":
 
         content = "\n" + indextemplate.format(path=dir, content=content)
 
-        with open(f"{dir}.html", "w") as f:
+        with open(f"{dir}/index.html", "w") as f:
             f.write(template.format(page=f"{dir}/", css="\n        <link rel=\"stylesheet\" href=\"/css/index.css\">", content=content))
 
     system("http-server -p 80 -d false -e html -c-1") # for testing
