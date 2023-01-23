@@ -2,6 +2,7 @@ from time import gmtime, strftime
 from os import system, walk
 
 from post import Post
+from index import index
 
 
 now = gmtime()
@@ -9,21 +10,27 @@ now = gmtime()
 with open("templates/master.html", "r") as f:
     template = f.read() % now.tm_year
 
+with open("templates/map.html", "r") as f:
+    maptemplate = f.read()
+
 with open("templates/error.html", "r") as f:
     errtemplate = f.read()
 
-with open("templates/map.html", "r") as f:
-    maptemplate = f.read()
+with open("templates/index.html", "r") as f:
+    indextemplate = f.read()
 
 errors = {
     404: "File Not Found"
 }
 
-posts: list[Post] = []
-for path, dirs, files in walk("posts"):
-    for file in files:
-        if file.endswith(".json"):
-            posts.append(Post.fromJSON(f"posts/{file}"))
+indexes = [
+    "css",
+    "media",
+    "templates",
+    "utils",
+]
+
+posts: list[Post] = [Post.fromJSON(file) for file in index("posts", None, filter=lambda p: p.endswith(".json"), format=False).files]
 
 
 if __name__ == "__main__":
@@ -63,5 +70,13 @@ if __name__ == "__main__":
         css = "\n        " + "\n        ".join([f"<link rel=\"stylesheet\" href=\"{cssfile}\">" for cssfile in set(styles)])
 
         f.write(template.format(page="Posts", css=css, content=content))
+
+    for dir in indexes:
+        content = "\n".join(["\n".join(g) for g in index(dir, "templates/file.html")])
+
+        content = "\n" + indextemplate.format(path=dir, content=content)
+
+        with open(f"{dir}.html", "w") as f:
+            f.write(template.format(page=f"{dir}/", css="\n        <link rel=\"stylesheet\" href=\"/css/index.css\">", content=content))
 
     system("http-server -p 80 -d false -e html -c-1") # for testing

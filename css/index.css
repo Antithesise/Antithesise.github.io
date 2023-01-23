@@ -1,0 +1,9 @@
+article > h2 > a {
+    color: #000 !important;
+    font-family: monospace;
+    text-decoration: underline;
+}
+
+article {
+    font-family: monospace;
+}
