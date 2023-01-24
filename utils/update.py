@@ -1,11 +1,11 @@
-from time import gmtime, strftime
-from os import system, walk
+from time import localtime, strftime
+from os import system
 
-from post import Post
 from index import index
+from post import Post
 
 
-now = gmtime()
+now = localtime()
 
 with open("templates/master.html", "r") as f:
     template = f.read() % now.tm_year
@@ -30,7 +30,7 @@ indexes = [
     "utils",
 ]
 
-posts: list[Post] = [Post.fromJSON(file) for file in index("posts", None, filter=lambda p: p.endswith(".json"), format=False).files]
+posts = [Post.fromJSON(file) for file in index("posts", None, filter=lambda p: p.endswith(".json"), format=False).files]
 
 
 if __name__ == "__main__":
@@ -61,12 +61,14 @@ if __name__ == "__main__":
 
             f.write(template.format(page=message, css="\n        <link rel=\"stylesheet\" href=\"/css/map.css\">", content="\n" + content))
 
-    content = "\n            <article>"
-    for p in reversed(posts):
-        content += f"\n                <ul>\n                    <li>\n                        <a href=\"/{p.path}\">{p.title}</a> ({strftime(r'%Y-%m-%d', p.date)})\n                    </li>\n                </ul>"
-
     with open("posts.html", "w") as f:
+        content = "\n            <article>"
+
+        for p in reversed(posts):
+            content += f"\n                <ul>\n                    <li>\n                        <a href=\"/{p.path}\">{p.title}</a> ({strftime(r'%Y-%m-%d', p.date)})\n                    </li>\n                </ul>"
+
         content += "\n            </article>"
+
         css = "\n        " + "\n        ".join([f"<link rel=\"stylesheet\" href=\"{cssfile}\">" for cssfile in set(styles)])
 
         f.write(template.format(page="Posts", css=css, content=content))

@@ -1,5 +1,5 @@
-from time import gmtime, strftime, struct_time, time
-from json import load
+from time import localtime, mktime, strftime, struct_time
+from json import dump, load
 
 from typing import Self
 
@@ -16,6 +16,16 @@ class Post:
     css: list[str]
     content: str
 
+    def __init__(self, title: str="", loc: str="", css: list[str]=[], content: str="") -> None:
+        now = localtime()
+
+        self.title = title
+        self.path = "posts/%d-%s-" % (now.tm_year, str(now.tm_mon).zfill(2))
+        self.date = now
+        self.loc = loc
+        self.css = css
+        self.content = content
+
     @classmethod
     def fromJSON(cls, path: str) -> Self:
         p = cls()
@@ -25,12 +35,23 @@ class Post:
 
         p.title = data["title"]
         p.path = data["path"]
-        p.date = gmtime(data["date"])
+        p.date = localtime(data["date"])
         p.loc = data["loc"]
         p.css = data["css"]
         p.content = data["content"]
 
         return p
+
+    def toJSON(self, path: str="") -> None:
+        with open((path or self.path + ".json"), "w") as f:
+            dump({
+                "title": self.title,
+                "path": self.path,
+                "date": int(mktime(self.date)),
+                "loc": self.loc,
+                "css": self.css,
+                "content": self.content
+            }, f, indent=4)
 
     def toHTML(self) -> str:
         return template.format(
@@ -44,7 +65,4 @@ class Post:
         )
 
 if __name__ == "__main__":
-    now = gmtime()
-
-    with open("posts/%d-%s-.json" % (now.tm_year, str(now.tm_mon).zfill(2)), "w") as f:
-        f.write("{\n    \"title\": \"\",\n    \"path\": \"posts/%d-%s-\",\n    \"date\": %d,\n    \"loc\": \"\",\n    \"css\": [],\n    \"content\": \"\"\n}" % (now.tm_year, str(now.tm_mon).zfill(2), int(time())))
+    Post()
