@@ -61,7 +61,7 @@ if __name__ == "__main__":
 
             f.write(template.format(page=message, css="\n        <link rel=\"stylesheet\" href=\"/css/map.css\">", content="\n" + content))
 
-    with open("posts.html", "w") as f:
+    with open("posts/index.html", "w") as f:
         content = "\n            <article>"
 
         for p in reversed(posts):
