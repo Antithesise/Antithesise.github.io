@@ -1,11 +1,12 @@
-from time import localtime, strftime
+from time import localtime, strftime, struct_time
 from os import system
 
 from index import index
 from post import Post
+from project import Project
 
 
-now = localtime()
+now: struct_time = localtime()
 
 with open("templates/master.html", "r") as f:
     template = f.read() % now.tm_year
@@ -31,7 +32,7 @@ indexes = [
 ]
 
 posts = [Post.fromJSON(file) for file in index("posts", None, filter=lambda p: p.endswith(".json"), format=False).files]
-
+projects = [Project.fromJSON(file) for file in index("projects", None, filter=lambda p: p.endswith(".json"), format=False).files]
 
 if __name__ == "__main__":
     home = []
@@ -69,12 +70,24 @@ if __name__ == "__main__":
 
         content += "\n            </article>"
 
-        css = "\n        " + "\n        ".join([f"<link rel=\"stylesheet\" href=\"{cssfile}\">" for cssfile in set(styles)])
+        css = "\n        ".join([f"<link rel=\"stylesheet\" href=\"{cssfile}\">" for cssfile in set(styles)])
 
         f.write(template.format(page="Posts", css=css, content=content))
 
+    with open("projects/index.html", "w") as f:
+        content = "\n            <article>\n                <ul>"
+
+        for p in projects:
+            content += "\n" + p.toHTML()
+
+        content += "\n                </ul>\n            </article>"
+
+        css = "\n        ".join([f"<link rel=\"stylesheet\" href=\"{cssfile}\">" for cssfile in set(styles)])
+
+        f.write(template.format(page="Projects", css="", content=content))
+
     for dir in indexes:
-        content = "\n".join(["\n".join(g) for g in index(dir, "templates/file.html")])
+        content = "\n" + "\n".join(["\n".join(g) for g in index(dir, "templates/file.html")])
 
         content = "\n" + indextemplate.format(path=dir, content=content)
 

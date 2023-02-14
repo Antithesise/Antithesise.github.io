@@ -65,4 +65,4 @@ class Post:
         )
 
 if __name__ == "__main__":
-    Post()
+    Post(input("Post Title: ")).toJSON()
