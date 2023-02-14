@@ -87,7 +87,7 @@ if __name__ == "__main__":
         f.write(template.format(page="Projects", css="", content=content))
 
     for dir in indexes:
-        content = "\n" + "\n".join(["\n".join(g) for g in index(dir, "templates/file.html")])
+        content = "\n" + "\n".join(["\n".join(g) for g in index(dir, "templates/file.html", filter=lambda p: p not in ["index.html", "__pycache__"])])
 
         content = "\n" + indextemplate.format(path=dir, content=content)
 
