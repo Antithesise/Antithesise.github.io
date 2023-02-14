@@ -36,6 +36,8 @@ def index(dirpath, template=None, /, *args, filter: Callable[[str], bool]=lambda
         dirlist = [dir for dir in dirs if filter(dir)]
         filelist = [file for file in files if filter(file)]
 
+        break
+
     dirlist.insert(0, "..")
 
     if format:
