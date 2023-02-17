@@ -75,7 +75,7 @@ if __name__ == "__main__":
         f.write(template.format(page="Posts", css=css, content=content))
 
     with open("projects/index.html", "w") as f:
-        content = "\n" * bool(projects)
+        content = ""
 
         for p in projects:
             content += "\n" + p.toHTML()

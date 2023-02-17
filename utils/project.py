@@ -42,9 +42,9 @@ class Project:
         assets = ""
 
         if self.assets:
-            assets += "\n                            "
+            assets += "\n                    "
 
-            assets += "\n                            ".join([f"<li><a href={a}>{a}</a></li>" for a in self.assets])
+            assets += "\n                    ".join([f"<li><a href={a}>{a}</a></li>" for a in self.assets])
 
         return template.format(
             assets=assets,
