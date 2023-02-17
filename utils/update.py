@@ -75,12 +75,10 @@ if __name__ == "__main__":
         f.write(template.format(page="Posts", css=css, content=content))
 
     with open("projects/index.html", "w") as f:
-        content = "\n            <article>\n                <ul>"
+        content = "\n" * bool(projects)
 
         for p in projects:
             content += "\n" + p.toHTML()
-
-        content += "\n                </ul>\n            </article>"
 
         css = "\n        ".join([f"<link rel=\"stylesheet\" href=\"{cssfile}\">" for cssfile in set(styles)])
 
