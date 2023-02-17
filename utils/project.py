@@ -9,12 +9,12 @@ with open("templates/project.html", "r") as f:
 
 class Project:
     title: str
-    path: str
+    assets: str
     description: str
 
     def __init__(self, title: str="", description: str="") -> None:
         self.title = title
-        self.path = f"projects/{title}.zip"
+        self.asstes = []
         self.description = description
 
     @classmethod
@@ -25,22 +25,29 @@ class Project:
             data = load(f)
 
         p.title = data["title"]
-        p.path = data["path"]
+        p.assets = data["assets"]
         p.description = data["description"]
 
         return p
 
     def toJSON(self, path: str="") -> None:
-        with open((path or self.path + ".json"), "w") as f:
+        with open((path or f"projects/{self.title.replace(' ', '_')}.json"), "w") as f:
             dump({
                 "title": self.title,
-                "path": self.path,
+                "assets": self.assets,
                 "description": self.description
             }, f, indent=4)
 
     def toHTML(self) -> str:
+        assets = ""
+
+        if self.assets:
+            assets += "\n                            "
+
+            assets += "\n                            ".join([f"<li><a href={a}>{a}</a></li>" for a in self.assets])
+
         return template.format(
-            path=self.path,
+            assets=assets,
             title=self.title,
             description=self.description
         )
